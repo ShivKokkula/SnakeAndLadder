@@ -7,6 +7,7 @@ public class SnakeAndLadder {
 	static final int IS_SNAKE = 1;
 	static int currentPosition = 0;
 	static final int winnigPosition = 100;
+	static int numTimesDiceRolled = 0;
 	public static void main(String[] args) {
 		
 		System.out.println("Welcome to Snake and Ladder Game");
@@ -14,7 +15,10 @@ public class SnakeAndLadder {
 		
 		while (currentPosition < winnigPosition) {
 			sn.getOptionAtcurrentPosition();
+			numTimesDiceRolled++;
 		}
+		
+		System.out.println("Total number of times Dice rolled: " + numTimesDiceRolled);
 		
 		
 	}
@@ -31,24 +35,27 @@ public class SnakeAndLadder {
 		
 		switch(optionMove) {
 		case IS_LADDER:
-			System.out.println("Ladder");
+			System.out.println("Current position: " + currentPosition);
+			System.out.println("Option picked: Ladder");
 			currentPosition = currentPosition + rollDice();
 			if (currentPosition > 100) {
 				currentPosition = 100;
 			}
-			System.out.println("Current position: " + currentPosition);
+			System.out.println("New position: " + currentPosition);
 			break;
 		case IS_SNAKE:
-			System.out.println("Snake");
+			System.out.println("Current position: " + currentPosition);
+			System.out.println("Option picked: Snake");
 			currentPosition = currentPosition - rollDice();
 			if (currentPosition < 0) {
 				currentPosition = 0;
 			}
-			System.out.println("Current Position: " + currentPosition);
+			System.out.println("New Position: " + currentPosition);
 			break;
 		default:
-			System.out.println("No Play");
-			System.out.println("Current Position: " + currentPosition);
+			System.out.println("Current position: " + currentPosition);
+			System.out.println("Option picked: No Play");
+			System.out.println("New Position: " + currentPosition);
 			break;
 		}
 		
