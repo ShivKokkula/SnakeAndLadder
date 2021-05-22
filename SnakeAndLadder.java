@@ -3,6 +3,8 @@ package SnakeAndLadder;
 public class SnakeAndLadder {
 	
 	int playerOne = 0;
+	static final int IS_LADDER = 2;
+	static final int IS_SNAKE = 1;
 	static int currentPosition = 0;
 	static final int winnigPosition = 100;
 	public static void main(String[] args) {
@@ -14,7 +16,6 @@ public class SnakeAndLadder {
 			sn.getOptionAtcurrentPosition();
 		}
 		
-		System.out.println(currentPosition);
 		
 	}
 	
@@ -29,12 +30,15 @@ public class SnakeAndLadder {
 		int optionMove = (int) (Math.floor(Math.random() * 10) % 3);
 		
 		switch(optionMove) {
-		case 2:
+		case IS_LADDER:
 			System.out.println("Ladder");
 			currentPosition = currentPosition + rollDice();
+			if (currentPosition > 100) {
+				currentPosition = 100;
+			}
 			System.out.println("Current position: " + currentPosition);
 			break;
-		case 1:
+		case IS_SNAKE:
 			System.out.println("Snake");
 			currentPosition = currentPosition - rollDice();
 			if (currentPosition < 0) {
