@@ -4,18 +4,17 @@ public class SnakeAndLadder {
 	
 	int playerOne = 0;
 	static int currentPosition = 0;
-
+	static final int winnigPosition = 100;
 	public static void main(String[] args) {
 		
 		System.out.println("Welcome to Snake and Ladder Game");
 		SnakeAndLadder sn = new SnakeAndLadder();
 		
-		for (int i = 0; i < 100; i++) {
+		while (currentPosition < winnigPosition) {
 			sn.getOptionAtcurrentPosition();
 		}
 		
-		int finalPostion = currentPosition;
-		System.out.println(finalPostion);
+		System.out.println(currentPosition);
 		
 	}
 	
@@ -38,6 +37,9 @@ public class SnakeAndLadder {
 		case 1:
 			System.out.println("Snake");
 			currentPosition = currentPosition - rollDice();
+			if (currentPosition < 0) {
+				currentPosition = 0;
+			}
 			System.out.println("Current Position: " + currentPosition);
 			break;
 		default:
@@ -45,6 +47,8 @@ public class SnakeAndLadder {
 			System.out.println("Current Position: " + currentPosition);
 			break;
 		}
+		
+		
 		
 	}
 
